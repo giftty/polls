@@ -7,12 +7,12 @@ export const Navbar = ()=>{
  return(
   <>
 	<div class="navigation-wrap bg-white shadow-sm start-header start-style">
-		<div class="container">
+		<div class="container-fluid">
 			<div class="row">
 				<div class="col-12">
 					<nav class="navbar navbar-expand-md navbar-light">
 					
-						<a class="navbar-brand" href="#" target="_blank"><img src="/images/POLLs.png" alt=""/></a>	
+						<a class="navbar-brand" href="#" target="_blank"><img src="/images/POLLs2.png" alt=""/></a>	
 						
 						<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 							<span class="navbar-toggler-icon"></span>
@@ -21,7 +21,7 @@ export const Navbar = ()=>{
 						<div class="collapse navbar-collapse" id="navbarSupportedContent">
 							<ul class="navbar-nav ml-auto py-4 py-md-0">
 								<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4 active">
-									<a class="nav-link"  href="#" role="button" >Home</a>
+									<a class="nav-link"  href="/" role="button" >Home</a>
 									
 								</li>
 								<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
@@ -38,10 +38,10 @@ export const Navbar = ()=>{
 									</div>
 								</li>
 								<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
-									<a className="nav-link " href="#" > GET STARTED</a>
+									<a className="nav-link " href="/signup" > GET STARTED</a>
 								</li>
 								<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
-									<a class="nav-link " href="#">LOGIN IN</a>
+									<a class="nav-link " href="/login">LOGIN IN</a>
 								</li>
 							</ul>
 						</div>

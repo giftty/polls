@@ -1,19 +1,16 @@
 
-import {Navbar} from "./components/navbar"
-
 export default function Home(){
  
  return(
   <div className="main-body">
    <div>
-   <Navbar> </Navbar>
    </div>
    <div className="row" style={{marginTop:"80px",padding:"10px 10px",height:"100vh"}}>
      <div className="col-lg-5 text-dark d-flex justify-content-center flex-column px-5 m-4">
        <h1 style={{fontWeight:"700",fontSize:"55px"}}>Live polls/<br></br>Interactions</h1>
        <p className="mt-3">Create engaging live polls and have anyone participate from anywhere easy and fast. Get the quick fedback; </p>
      
-      <button className="btn p-3 text-white w-75" style={{backgroundColor:"#5e87f8"}}> GET STARTED</button>
+      <a href="/signup"><button className="btn p-3 text-white w-75" style={{backgroundColor:"#5e87f8"}}> GET STARTED</button></a>
      </div>
      {/* end of col-lg-5 */}
      <div className="col text-white d-flex justify-content-center flex-column p-5 mb-1"  style={{backgroundColor:"#5e87f8"}}>

@@ -14,7 +14,7 @@ body{
 	font-weight: 400;
 	color: #212112;
 	background-color: #fff;
-	overflow-x: hidden;
+	overflow: hidden;
     transition: all 200ms linear;
 }
 ::selection {
@@ -26,9 +26,58 @@ body{
 	background-color: #5e87f8;
 }
 .text-primary-color{
- color:#5e87f8;
+ color:#5e87f8 !important;
+}
+.primary-background{
+background-color: #5e87f8;
+}
+.medium-text{
+font-weight: 700;
+  font-size: 30px;
 }
 
+.background-styling{
+  transform: rotate(-30deg);
+  width:100vw;height:100vh;position:absolute;top:95%;
+  z-index: 0;
+ margin-left: 350px;
+}
+.blinking{
+ width: 30px; height: auto;
+ animation: blink 1s ease-in-out infinite;
+ }
+ @keyframes blink {
+	23%{ opacity: 0.6;} 45%{ opacity:0.3 ;} 70%{ opacity:0 ;}  100%{ opacity:0.4;}
+ }
+
+ /* Form input  */
+ /* =============================== */
+ input {
+   outline: none !important;
+ }
+ .poll-input{
+  font: inherit;
+  background: rgba(0,0,0,0);
+  color: currentColor;
+
+  outline: none;
+  padding: 0;
+  margin: 0;
+    margin-top: 0px;
+  width: 100%;
+  max-width: 100%;
+  vertical-align: bottom;
+  text-align: inherit;
+  box-sizing: content-box;
+  border-top: .84375em solid transparent;
+  border-right: .84375em solid transparent;
+  border-left:  .84375em solid transparent;;
+ }
+ .card{
+  border: none !important;
+  border-radius: 15px;
+ 	box-shadow: 0 5px 10px 0 rgba(138, 155, 165, 0.55);
+ }
 /* #Navigation
 ================================================== */
 
