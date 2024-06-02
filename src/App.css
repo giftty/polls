@@ -31,9 +31,41 @@ body{
 .primary-background{
 background-color: #5e87f8;
 }
+.primary-background-light{
+  background-color: #5e87f862;
+}
 .medium-text{
-font-weight: 700;
+font-weight: 500;
   font-size: 30px;
+}
+.check-container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  box-shadow: 0px 0px 0px 1px inset;
+  border-radius: 4px;
+  background: rgb(255, 255, 255);
+  color: rgb(229, 229, 229);
+}
+/* Hide the browser's default checkbox */
+.check-container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+/* Show the checkmark when checked */
+.container input:checked  {
+  opacity: .7;
+  width: 18px;
+  height: 18px;
+}
+.text-mute{
+ color:#a8a7a7 !important
 }
 
 .background-styling{
