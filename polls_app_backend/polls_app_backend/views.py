@@ -108,23 +108,25 @@ def postPoll(request) :
      body_data = json.loads(body)
      poll = MultiPolls.objects.filter(id=body_data['id']).values()
      if len(poll) <1 :
-      mediastr= body_data['image'].split(',')[1]
-      mediatype = body_data['image'][0:70].split(';')
-      mediatype = mediatype[0].split('/')[1]
-      mediaFile = open('./static/poll_media/media'+body_data['id'][1:]+'.'+mediatype,"wb")
-      mediaFile.write(base64.b64decode(mediastr))
-      body_data['image'] = './static/poll_media/media'+body_data['id'][1:]+'.'+mediatype
-      
+      if len(body_data['image'])>10 :
+        mediastr= body_data['image'].split(',')[1]
+        mediatype = body_data['image'][0:70].split(';')
+        mediatype = mediatype[0].split('/')[1]
+        mediaFile = open('./static/poll_media/media'+body_data['id'][1:]+'.'+mediatype,"wb")
+        mediaFile.write(base64.b64decode(mediastr))
+        body_data['image'] = './static/poll_media/media'+body_data['id'][1:]+'.'+mediatype
+      else :
+         body_data['image']=""
       if body_data['type'] == 'multi-polls':
         print(body_data['image'])
         poll = MultiPolls(id=body_data['id'],
-              media_content=body_data['image'], number_of_participation= 0, number_of_engagement = 0,data = body_data['data'])
+              media_content=body_data['image'], number_of_participation= 0, number_of_engagement = 0,total_score=body_data['totalscore'],data = body_data['data'])
         poll.save()
         return HttpResponse(json.dumps({"data":"success"}))
       else :
         return HttpResponse(json.dumps({"error":"No poll type"}))
      else :
-        return HttpResponse(json.dumps({"error":"Sorry poll already exist try again later."})) 
+        return HttpResponse(json.dumps({"error":"Sorry poll already exist try creating a new poll."})) 
   except Exception as e :
     print(e)
     return HttpResponse(json.dumps({"error":"An error occurred please try again"}))
@@ -172,14 +174,23 @@ def pollanddata(request) :
      print(e)      
      return HttpResponse(json.dumps({"error":"An error occurred please try again"})) 
 
+def getAllvoters(request) :
+    body = request.body.decode('utf-8')
+    body_data = json.loads(body)
+    allvotingUsers = VotingUsers.objects.filter(pollID = body_data['pollid'] ).values()
+    allvotingUsers = list(allvotingUsers)
+    return HttpResponse(json.dumps({"data":allvotingUsers}))
+
 def updatevote(request) : 
     try :
       body = request.body.decode('utf-8')
       body_data = json.loads(body)
-      print(body_data) 
-      check = VotingUsers.objects.filter(tagname = body_data["votingUser"],pollID = body_data['id'] ).values()
-      if len(list(check)) < 0:
-         votinguser = VotingUsers(pollID = body_data['id'],tagname = body_data["votingUser"] )
+      print(body_data["voter-details"]) 
+     
+      check = VotingUsers.objects.filter(voterID = body_data["votingUser"],pollID = body_data['id'] ).values()
+      check = list(check)
+      if len(check) <= 0 :
+         votinguser = VotingUsers(voterID=body_data["votingUser"], pollID = body_data['id'],userdetails = body_data["voter-details"] )
          votinguser.save()
 
       childpoll = MultiPolls.objects.get(id = body_data['id'])
@@ -191,6 +202,16 @@ def updatevote(request) :
     except Exception as e :
        print(e)
        return HttpResponse(json.dumps({"error":"An error occurred please try again"})) 
+    
+def getuservote(request) :
+    body = request.body.decode('utf-8')
+    body_data = json.loads(body)
+    print(body_data)
+    check = VotingUsers.objects.filter(voterID = body_data["voteUser"],pollID = "#"+body_data['id'] ).values()
+    check = list(check)
+    return HttpResponse(json.dumps(check[0]["userdetails"]))
+
+
 def serveFiles(request):
    return render(request,'mediaplay.html')
 

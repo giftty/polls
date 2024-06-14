@@ -12,24 +12,9 @@ export function PollEventLayout(){
  var [poll,setpoll] = useState({})
  var [currentPoll,setcurrentPoll] =useState({})
  var count = 0
- useEffect(function(){
-    var pollstr = new URLSearchParams(window.location.search).get('poll') 
-     console.log(pollstr)
-     if(location.pathname.indexOf('polls-events')!= -1){
-         console.log('polls event')
-         pollstr = JSON.parse(getCookie('poll'))
-         console.log(pollstr)
-        setpoll({...pollstr})
-     }else{
-     
-       if(!pollstr){
-        pollstr = JSON.parse(getCookie('poll'))
-        console.log(pollstr)
-        pollstr = pollstr["pollsID"].substring(1)
-      }
-       console.log(pollstr)
-      if(typeof poll["name"]== 'undefined' && pollstr){
-        sendData('pollanddata',{'id':'#'+pollstr},(result)=>{
+
+ function getAnalysisContent(){
+       sendData('pollanddata',{'id':'#'+pollstr},(result)=>{
         console.log(result)
         if(result['parent-poll']){
         currentPoll['parent-poll'] = result['parent-poll']
@@ -52,6 +37,54 @@ export function PollEventLayout(){
         }
         
      })
+ }
+ var pollstr
+ function getAnalytics(){
+       sendData('pollanddata',{'id':'#'+pollstr},(result)=>{
+        console.log(result)
+        if(result['parent-poll']){
+        currentPoll['parent-poll'] = result['parent-poll']
+        currentPoll['child-poll'] = result['child-poll'] 
+        setpoll({...currentPoll['parent-poll']})   
+        currentPoll['child-poll']['data'] = currentPoll['child-poll']['data'].toString().trim('"')
+        currentPoll['child-poll']['data'] = currentPoll['child-poll']['data'].toString().replaceAll("'",'"')
+        currentPoll['child-poll']['data'] = JSON.parse(currentPoll['child-poll']['data'])
+        console.log(currentPoll['child-poll']['data'])
+        setpoll({...currentPoll['parent-poll']})
+        setcurrentPoll({...currentPoll})   
+        }else{
+        if(result['error'] && location.pathname.indexOf('/polls-analytics')!=-1){
+        window.location='/polls-events'
+        }else{
+        seterrormessage("No such poll.")
+        }
+
+
+        }
+
+        })
+ }
+ useEffect(function(){
+     pollstr = new URLSearchParams(window.location.search).get('poll') 
+     console.log(pollstr)
+     if(location.pathname.indexOf('polls-events')!= -1){
+         console.log('polls event')
+         pollstr = JSON.parse(getCookie('poll'))
+         console.log(pollstr)
+        setpoll({...pollstr})
+     }else{
+     
+       if(!pollstr){
+        pollstr = JSON.parse(getCookie('poll'))
+        console.log(pollstr)
+        pollstr = pollstr["pollsID"].substring(1)
+      }
+       console.log(pollstr)
+      if(typeof poll["name"]== 'undefined' && pollstr){
+       getAnalytics()
+       setInterval(function(){
+        getAnalytics()
+       },60000)
   
  }
 

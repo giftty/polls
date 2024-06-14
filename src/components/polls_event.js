@@ -25,9 +25,9 @@ return (
                          <h6>Quiz</h6>
                       </div>
 
-                      <div className="p-3 text-center border col-5 m-2" style={{borderRadius:'15px'}}>
+                      <div onClick={()=>{ window.location='/polls-events/forms'}}  className="p-3 text-center border col-5 m-2" style={{borderRadius:'15px'}}>
                       <img className="mt-2 mb-1" src="images\comment_9784114.png" style={{width:'50px',height:'auto'}}/>
-                         <h6>Large text responds</h6>
+                         <h6>Form surveys</h6>
                       </div>
                      </div>
                     </div>

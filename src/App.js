@@ -12,7 +12,7 @@ import { PollDashboard } from './components/polladminlayout.js';
 import { Dashboard } from './components/dashboard.js';
 import { PollEventLayout } from './components/polls_eventlayout.js';
 import { PollsEvent } from './components/polls_event.js';
-import {MultichiocePolls} from './components/polls_types.js'
+import {MultichiocePolls} from './components/multi_polls.js'
 import { CardGenerator } from './components/cardgenerator.js';
 import { PollsDisplay } from './components/polls-display.js';
 import { Polls_analytics } from './components/poll-analytics.js';
@@ -20,6 +20,7 @@ import { Allpolls } from './components/allpolls.js';
 import { Allusers } from './components/allusers.js';
 import { ErrorComponent } from './components/errorcomponet.js';
 import { Pollsearch } from './components/pollssearch.js';
+import { SurveyCreatorWidget } from './components/formevent.js';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -98,7 +99,13 @@ const router = createBrowserRouter([
           path:'/polls-events/multichioce',
           element:<MultichiocePolls/>,
            errorElement:<ErrorComponent errmessage="An error has occurred please try again"/>,
+        },
+         {
+          path:'/polls-events/forms',
+          element:<SurveyCreatorWidget/>,
+           errorElement:<ErrorComponent errmessage="An error has occurred please try again"/>,
         }
+
     ]
   },{
     path: '/polls-display',

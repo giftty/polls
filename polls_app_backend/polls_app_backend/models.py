@@ -28,12 +28,14 @@ class MultiPolls(models.Model) :
   media_content = models.CharField(max_length=2000)
   number_of_participation = models.CharField(max_length=50)
   number_of_engagement =  models.CharField(max_length=50)
+  total_score = models.CharField(max_length = 50,default=0)
   data = models.CharField(max_length=2000) 
 
 class VotingUsers(models.Model) :
-      id = models.AutoField(primary_key=True)
+      sn = models.AutoField(primary_key=True)
+      voterID =  models.CharField(max_length=50)
       pollID =  models.CharField(max_length=50)
-      tagname = models.CharField(max_length=50)
+      userdetails = models.CharField(max_length=500)
 
    
     

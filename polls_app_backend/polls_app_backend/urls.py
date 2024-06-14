@@ -30,6 +30,8 @@ urlpatterns = [
     path('postpoll',views.postPoll),
     path('pollanddata',views.pollanddata),
     path('updatevote',views.updatevote),
+    path('getuservote',views.getuservote),
+    path('getAllvoters',views.getAllvoters),
     path('servefile',views.stream_video), 
     path('admin/', admin.site.urls),
     

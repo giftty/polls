@@ -66,3 +66,15 @@ reqObj={
   
 
 }
+
+export var zonelist = [
+ 'Lagos zone 1',
+ 'Lagos zone 2',
+ 'Lagos zone 3',
+ 'Lagos zone 4',
+ 'Lagos zone 5',
+ 'Lagos zone 6',
+ 'Port Harcourt zone 1',
+ 'Port Harcourt zone 2',
+ 'Port Harcourt zone 3'
+]
