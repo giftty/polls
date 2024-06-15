@@ -68,19 +68,16 @@ export function PollEventLayout(){
      pollstr = new URLSearchParams(window.location.search).get('poll') 
      console.log(pollstr)
      if(location.pathname.indexOf('polls-events')!= -1){
-         console.log('polls event')
          pollstr = JSON.parse(getCookie('poll'))
-         console.log(pollstr)
         setpoll({...pollstr})
      }else{
-     
        if(!pollstr){
         pollstr = JSON.parse(getCookie('poll'))
         console.log(pollstr)
         pollstr = pollstr["pollsID"].substring(1)
       }
        console.log(pollstr)
-      if(typeof poll["name"]== 'undefined' && pollstr&&getCookie('user-id')){
+      if(typeof poll["name"]== 'undefined' && pollstr){
        getAnalytics()
        setInterval(function(){
         getAnalytics()
@@ -160,7 +157,7 @@ export function PollEventLayout(){
                 <img src="/images/profilevector.jpg" alt="profile" id="profile-image" style={{height:"40px",width:"40px",borderRadius: "100%"}}/></a>
                                        
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item text-dark logout-btn" href="#">Log Out</a>
+                        <a class="dropdown-item text-dark logout-btn" href="logout">Log Out</a>
                     </div>
                 </div>
             </div>
@@ -178,7 +175,7 @@ export function PollEventLayout(){
         <div className="d-flex flex-column justify-content-center" style={{height:'90vh'}}>
            <div className="col-auto mx-auto">
             <img src="/images/POLLs.png" style={{height:'40px',width:'auto'}}/>
-            {errmessage&&<div className="py-3">{errmessage}<a href="/">  return to home</a></div>}
+            {errmessage?<div className="py-3">{errmessage}<a href="/">  return to home</a></div>:<div> Loading .... </div>}
            </div>
         </div>
     )

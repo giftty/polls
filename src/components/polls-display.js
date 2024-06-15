@@ -147,7 +147,7 @@ var [currentPoll,setcurrentPoll] = useOutletContext()
         }} 
         className="btn primary-background text-white col-5 col-md-3 ml-auto mr-1 mt-4" style={{height:'40px',fontSize:'11px'}}>Send</button>
 
-  <div class="modal fade" id="pollsModal2" tabindex="-1" aria-labelledby="pollsModalLabel" aria-hidden="true">
+  <div class="modal fade" id="pollsModal2" tabindex="-1" aria-labelledby="pollsModalLabel" aria-hidden="true" data-backdrop="static">
   <div class="modal-dialog modal-dialog-centered" style={{maxWidth:'600px',}}>
     <div class="modal-content" style={{fontSize:'13px',}}>
       
@@ -179,7 +179,7 @@ var [currentPoll,setcurrentPoll] = useOutletContext()
            </select>
            {errors.voter_zone && <span style={{color:'red',fontSize:'10px'}}>Please select a zone.</span>}
        <div className="row py-2 m-0 justify-content-between">
-       <div className="btn">Cancel</div>  <button onClick={handleSubmit((data,event)=>{
+       <a href="/"><div className="btn">Cancel</div></a> <button onClick={handleSubmit((data,event)=>{
        console.log(data);
        setvoter(data);
         document.querySelector('.modal-backdrop').style.display="none"
@@ -195,7 +195,7 @@ var [currentPoll,setcurrentPoll] = useOutletContext()
   </div>
 </div>
    </div>
-     <button className="btn pollinfomodaltrigger" data-toggle="modal" data-target="#pollsModal2"></button>
+     <button className="btn pollinfomodaltrigger" data-toggle="modal" data-target="#pollsModal2" style={{visibility:'hidden'}}></button>
 
    </div>
  )
