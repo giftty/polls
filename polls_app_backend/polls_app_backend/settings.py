@@ -94,6 +94,7 @@ DATABASES = {
     #       "PASSWORD": "",
     #       "HOST": "localhost"    
     # }
+
     "default": {
         "ENGINE": "django.db.backends.mysql",
          "NAME":"polls_app",
