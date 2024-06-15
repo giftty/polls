@@ -22,6 +22,7 @@ def login(request) :
       print(usa[0]['userID'])
       request.session['user'] = usa[0]['userID']
       usa[0]['created'] = str(usa[0]['created'])
+      print(usa)
       return HttpResponse(json.dumps(usa))
      else :
         return HttpResponse(json.dumps({'error':'Email and password combination is not correct'}))     
@@ -36,6 +37,7 @@ def register(request) :
    try :
       body = request.body.decode('utf-8')
       body_data = json.loads(body)
+      print(body)
       try :
        usa = Users.objects.filter(email = body_data['email'] )
        print(list(usa))

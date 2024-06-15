@@ -39,19 +39,19 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # 'corsheaders',
-    # 'rest_framework'
+     'corsheaders',
+    #  'rest_framework'
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-   # 'django.middleware.csrf.CsrfViewMiddleware',
+    # 'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    # 'corsheaders.middleware.CorsMiddleware'
+    'corsheaders.middleware.CorsMiddleware'
 ]
 
 ROOT_URLCONF = 'polls_app_backend.urls'
@@ -76,9 +76,9 @@ WSGI_APPLICATION = 'polls_app_backend.wsgi.application'
 
 #white list
 CORS_ORIGIN_WHITELIST = (
-    'http://localhost:3000','http://192.168.43.253:8000'
+    'http://localhost:3000','http://192.168.43.253:8000','http://13.51.174.251:8000'
 )
-CSRF_TRUSTED_ORIGINS = ['http://localhost:3000','http://192.168.43.253:8000']
+CSRF_TRUSTED_ORIGINS = ['http://localhost:3000','http://192.168.43.253:8000','http://13.51.174.251:8000']
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
@@ -87,20 +87,20 @@ DATABASES = {
     #     'ENGINE': 'django.db.backends.sqlite3',
     #     'NAME': BASE_DIR / 'db.sqlite3',
     # }
-    #  "default": {
-    #     "ENGINE": "django.db.backends.mysql",
-    #      "NAME":"polls_app",
-    #       "USER": "root",
-    #       "PASSWORD": "",
-    #       "HOST": "localhost"    
-    # }
-    "default": {
+     "default": {
         "ENGINE": "django.db.backends.mysql",
          "NAME":"polls_app",
-          "USER": "serveruser",
-          "PASSWORD": "serverdata",
+          "USER": "root",
+          "PASSWORD": "",
           "HOST": "localhost"    
     }
+    # "default": {
+    #     "ENGINE": "django.db.backends.mysql",
+    #      "NAME":"polls_app",
+    #       "USER": "serveruser",
+    #       "PASSWORD": "serverdata",
+    #       "HOST": "localhost"    
+    # }
 }
 
 

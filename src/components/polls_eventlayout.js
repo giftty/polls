@@ -80,7 +80,7 @@ export function PollEventLayout(){
         pollstr = pollstr["pollsID"].substring(1)
       }
        console.log(pollstr)
-      if(typeof poll["name"]== 'undefined' && pollstr){
+      if(typeof poll["name"]== 'undefined' && pollstr&&getCookie('user-id')){
        getAnalytics()
        setInterval(function(){
         getAnalytics()
