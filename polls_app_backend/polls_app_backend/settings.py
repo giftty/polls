@@ -87,20 +87,20 @@ DATABASES = {
     #     'ENGINE': 'django.db.backends.sqlite3',
     #     'NAME': BASE_DIR / 'db.sqlite3',
     # }
-     "default": {
-        "ENGINE": "django.db.backends.mysql",
-         "NAME":"polls_app",
-          "USER": "root",
-          "PASSWORD": "",
-          "HOST": "localhost"    
-    }
-    # "default": {
+    #  "default": {
     #     "ENGINE": "django.db.backends.mysql",
     #      "NAME":"polls_app",
-    #       "USER": "serveruser",
-    #       "PASSWORD": "serverdata",
+    #       "USER": "root",
+    #       "PASSWORD": "",
     #       "HOST": "localhost"    
     # }
+    "default": {
+        "ENGINE": "django.db.backends.mysql",
+         "NAME":"polls_app",
+          "USER": "serveruser",
+          "PASSWORD": "serverdata",
+          "HOST": "localhost"    
+    }
 }
 
 
