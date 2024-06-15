@@ -1,11 +1,9 @@
 import base64
 import json
 import os
-import random
 from django.http import JsonResponse, StreamingHttpResponse
 from django.shortcuts import redirect, render,HttpResponse
 from django.views.decorators.csrf import csrf_exempt
-import requests
 from polls_app_backend.models import MultiPolls, Polls, Users,VotingUsers
 import re
 import mimetypes
