@@ -13,7 +13,6 @@ import { Dashboard } from './components/dashboard.js';
 import { PollEventLayout } from './components/polls_eventlayout.js';
 import { PollsEvent } from './components/polls_event.js';
 import {MultichiocePolls} from './components/multi_polls.js'
-import { CardGenerator } from './components/cardgenerator.js';
 import { PollsDisplay } from './components/polls-display.js';
 import { Polls_analytics } from './components/poll-analytics.js';
 import { Allpolls } from './components/allpolls.js';

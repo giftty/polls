@@ -1,5 +1,4 @@
 import { useState,useEffect} from "react"
-import { useNavigate } from "react-router-dom";
 import Datetime from 'react-datetime';
 import "react-datetime/css/react-datetime.css";
 import { dataSTore } from "./dataobject";
@@ -13,7 +12,6 @@ export function Dashboard(){
  let [startdate,setStartdate] = useState("2024-05-30 12:00")
  let [enddate,setEnddate] = useState("2024-05-30 17:00")
  let [polls,setpolls] = useState([])
- const navigate = useNavigate()
 function  createPoll(data,event){
   event.target.disabled = "disabled"
   var userID =  getCookie('user-id')
