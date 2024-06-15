@@ -8,6 +8,7 @@ import { useOutletContext } from "react-router-dom";
 import { getCookie, sendData, zonelist } from './models';
 
         
+        
 export function Polls_analytics(){
    var [currentPoll,setcurrentPoll] = useOutletContext()
    var [votingUsers,setvotingusers] = useState([])
